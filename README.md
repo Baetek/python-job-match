@@ -4,7 +4,7 @@
 
 - Logging, a production program should include logging at applicable levels, so that e.g we can see the basics of what's going at INFO level, or are able to quickly find the cause of an issue at DEBUG level even if the program doesn't crash but doesn't behave as expected
 
-- Crash handling, while some care was taken to avoid Iterating over None situations, handling API failurs, and strict typing with PyRight to ensure everything is at is should be. For real programs a decision should be made whether or not the program is allowed to crash and in what circumstances. In some environments a 500 server error might be fine while in others a program should always aim to recover and report errors softly.
+- Crash handling, while some care was taken to avoid Iterating over None situations, handling API failures, and strict typing with PyRight to ensure everything is at is should be. For real programs a decision should be made whether or not the program is allowed to crash and in what circumstances. In some environments a 500 server error might be fine while in others a program should always aim to recover and report errors softly.
 
 - Testing, the test set is quite limited
 
