@@ -1,3 +1,7 @@
+"""
+The main person to job matching algorithm
+"""
+
 from typing import List, Optional, NewType
 from dataclasses import dataclass
 
@@ -10,10 +14,19 @@ MatchScore = NewType('MatchScore', int)
 
 @dataclass
 class MatchedJob:
+    """
+    Used as an output formatting helper object
+    combines a Job with a Match Score
+    """
     job: Job
     score: MatchScore
 
 class MemberJobs:
+    """
+    Output formatting helper object.
+    Sorts and filters jobs matched to a member for
+    display purposes
+    """
     def __init__(self, member: Member, jobs: Optional[List[MatchedJob]]):
         self.member = member
         self.jobs = None
@@ -25,6 +38,9 @@ class MemberJobs:
 
     @staticmethod
     def _sort_and_filter(jobs: List[MatchedJob]):
+        """
+        Sorts and filters jobs based on their score
+        """
         jobs = sorted(jobs, key=lambda job: job.score, reverse=True)
         highest_score = jobs[0].score
 
@@ -34,23 +50,35 @@ class MemberJobs:
         return jobs
 
 def _score_jobs_for_member(member: Member, jobs: List[Job]) -> Optional[List[MatchedJob]]:
+    """
+    Given a member and a list of jobs
+
+    Returns
+    -------
+    list
+        A list of jobs that in any way seem relevant to the given member
+        along with the total relevance match score for each job
+    """
     def _get_match_score(member: Member, job: Job) -> MatchScore:
+        """
+        Calculates the total match score for a job and member pair
+        Every word the member mensions that matches a particular job
+        is worth one point.
+        """
         match_score = 0
         for word in member.bio:
             for word in get_word_list_for_word(word):
-                if word in job.location:
-                    match_score += 1
-                    break
-
-                if word in job.title:
+                if word in job.location or word in job.title:
                     match_score += 1
                     break
 
         return MatchScore(match_score)
 
     jobs_for_member: List[MatchedJob] = []
+
     for job in jobs:
         match_score = _get_match_score(member, job)
+
         if match_score > 0:
             jobs_for_member.append(MatchedJob(job, match_score))
 
@@ -60,6 +88,9 @@ def match_jobs_to_members(
     jobs: Optional[List[Job]],
     members: Optional[List[Member]]
 ) -> Optional[List[MemberJobs]]:
+    """
+    The main public function for matching members with relevant jobs.
+    """
     matches = []
     if members:
         for member in members:

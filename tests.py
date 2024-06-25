@@ -1,3 +1,7 @@
+"""
+Basic semi-integration testing
+"""
+
 from typing import List
 
 from test_fixtures import MEMBERS, JOBS
@@ -7,6 +11,10 @@ from members import Member
 from matcher import match_jobs_to_members
 
 def test_match_jobs_to_members():
+    """
+    Given an example list of jobs and members,
+    ensure decent matches are provided
+    """
     jobs: List[Job] = Job.new_from_list(JOBS)
     members: List[Member] = Member.new_from_list(MEMBERS)
 
@@ -17,11 +25,17 @@ def test_match_jobs_to_members():
     """.strip()
 
 def test_match_jobs_to_members_no_jobs_no_members():
+    """
+    Ensure no matches are found if no members or jobs are provided
+    """
     matches = match_jobs_to_members(None, None)
 
     assert matches is None
 
 def test_match_jobs_to_members_no_jobs():
+    """
+    Ensure no matches are found if only members are provided
+    """
     members: List[Member] = Member.new_from_list(MEMBERS)
 
     matches = match_jobs_to_members(None, members)
@@ -29,6 +43,9 @@ def test_match_jobs_to_members_no_jobs():
     assert matches is None
 
 def test_match_jobs_to_members_no_members():
+    """
+    Ensure no matches are found if only jobs are provided
+    """
     jobs: List[Job] = Job.new_from_list(JOBS)
 
     matches = match_jobs_to_members(jobs, None)

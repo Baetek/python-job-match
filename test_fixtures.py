@@ -1,3 +1,7 @@
+"""
+Static fixtures for use by pytest
+"""
+
 MEMBERS = [
   {
     "name": "Joe",

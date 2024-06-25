@@ -1,3 +1,10 @@
+"""
+Implementation of an exercise of matching
+people with jobs that may suit them
+
+Calls external API's to retrieve a list of people and a list of jobs
+and finds people suitable jobs
+"""
 
 from typing import List
 
