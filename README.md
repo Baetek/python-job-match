@@ -12,6 +12,10 @@
 
 - Diagrams, state flow diagrams should be included to allow easy reasoning about the programs behaviour
 
+- Formatting and output presentation
+
+- Consistency across codebase
+
 ## General approach limitations
 
 ### Matching algorithm
