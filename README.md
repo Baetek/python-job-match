@@ -1,5 +1,20 @@
 # python-job-match
 
+## Getting started
+
+- Clone repo
+- In the repo create a virtual environment `python -m venv .venv`
+- Activate the virtual environment `source .venv/bin/activate`
+- Install dependencies `pip install -r requirements.txt`
+
+### Running the program
+
+`python main.py`
+
+### Running the tests
+
+`pytest tests.py`
+
 ## Time constraint limitations
 
 - Logging, a production program should include logging at applicable levels, so that e.g we can see the basics of what's going at INFO level, or are able to quickly find the cause of an issue at DEBUG level even if the program doesn't crash but doesn't behave as expected
