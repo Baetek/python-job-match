@@ -1,3 +1,5 @@
+from typing import List
+
 from test_fixtures import MEMBERS, JOBS
 
 from jobs import Job
