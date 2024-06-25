@@ -1,4 +1,4 @@
-from typing import List, Any, Dict
+from typing import List, Dict
 
 class Job:
     def __init__(self, title, location):
@@ -10,4 +10,10 @@ class Job:
 
     @classmethod
     def new_from_list(cls, jobs_list: List[Dict[str, str]]) -> List['Job']:
-        return [cls(job['title'].lower().split(), job['location'].lower().split()) for job in jobs_list]
+        return [
+            cls(
+                job['title'].lower().split(),
+                job['location'].lower().split()
+            )
+            for job in jobs_list
+        ]

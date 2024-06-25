@@ -19,18 +19,18 @@ def test_match_jobs_to_members():
 def test_match_jobs_to_members_no_jobs_no_members():
     matches = match_jobs_to_members(None, None)
 
-    assert matches == None
+    assert matches is None
 
 def test_match_jobs_to_members_no_jobs():
     members: List[Member] = Member.new_from_list(MEMBERS)
 
     matches = match_jobs_to_members(None, members)
 
-    assert matches == None
+    assert matches is None
 
 def test_match_jobs_to_members_no_members():
     jobs: List[Job] = Job.new_from_list(JOBS)
 
     matches = match_jobs_to_members(jobs, None)
 
-    assert matches == None
+    assert matches is None

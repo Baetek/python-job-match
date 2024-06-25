@@ -1,4 +1,4 @@
-from typing import List, Any, Dict
+from typing import List, Dict
 from processor import get_alphanumeric_with_spaces
 
 class Member:
@@ -11,5 +11,10 @@ class Member:
 
     @classmethod
     def new_from_list(cls, member_list: List[Dict[str, str]]) -> List['Member']:
-        return [cls(member['name'].lower(), get_alphanumeric_with_spaces(member['bio']).lower().split(" ")) for member in member_list]
-
+        return [
+            cls(
+                member['name'].lower(),
+                get_alphanumeric_with_spaces(member['bio']).lower().split(" ")
+            )
+            for member in member_list
+        ]

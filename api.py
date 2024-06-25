@@ -1,6 +1,7 @@
-import requests
 from urllib.parse import urljoin, urlparse, urlunparse
 from typing import Dict, Any, List
+
+import requests
 
 BRIGHT_NETWORK_API_ROOT = "https://bn-hiring-challenge.fly.dev"
 
@@ -12,7 +13,7 @@ def _get_full_url(url: str):
 def _get(url: str) -> List[Dict[str, Any]]:
     full_url = _get_full_url(url)
     try:
-        response = requests.get(full_url)
+        response = requests.get(full_url, timeout=10)
         response.raise_for_status()
         return response.json()
     except requests.exceptions.HTTPError as http_err:
