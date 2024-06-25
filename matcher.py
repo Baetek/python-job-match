@@ -23,7 +23,7 @@ class MemberJobs:
             self.jobs = MemberJobs._sort_and_filter(jobs)
 
     def __repr__(self):
-        return f"MemberJobs(member={self.member}, jobs={self.jobs})"
+        return f"{self.member}, {self.jobs}"
 
     @staticmethod
     def _sort_and_filter(jobs: List[MatchedJob]):
