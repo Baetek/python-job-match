@@ -34,4 +34,4 @@ extensive hand written python logic.
 
 There's a large trade off between CPU time and memory on this task without a clear ideal pick. A database / persistent storage would make it clear that CPU time is more valuable than memory.
 
-So in the real world the ideal thing to do would likely be to pre-process all the data fields, such as .lower(), .alphanumeric_with_spaces(), .split(), get_word_list_for_word(). As as I mentioned most of this only needs done once per user profile edit or job listing change. Leaving a lot less work for each run of the matching algorithm.
+So in the real world the ideal thing to do would likely be to pre-process all the data fields, such as .lower(), .alphanumeric_with_spaces(), .split(), get_word_list_for_word(). As as I mentioned most of this only needs done once per user profile edit or job listing change. Since profile edits likely occur far less often than generating lists of matches, this would be far more efficient than doing all the processing on every match algorithm run.
